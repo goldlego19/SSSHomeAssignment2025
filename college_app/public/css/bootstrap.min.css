@@ -207,7 +207,7 @@ a {
   text-decoration: none;
 }
 a:hover {
-  color: #bc1212;
+  color: #6c7293;
 }
 a:not([href]):not([class]),
 a:not([href]):not([class]):hover {
@@ -2570,7 +2570,7 @@ fieldset:disabled .btn {
 .btn-primary.active,
 .show > .btn-primary.dropdown-toggle {
   color: #fff;
-  background-color: #bc1212;
+  background-color: #6c7293;
   border-color: #b01111;
 }
 .btn-check:checked + .btn-primary:focus,
@@ -3137,7 +3137,7 @@ fieldset:disabled .btn {
   text-decoration: none;
 }
 .btn-link:hover {
-  color: #bc1212;
+  color: #6c7293;
 }
 .btn-link:disabled,
 .btn-link.disabled {
@@ -3585,7 +3585,7 @@ fieldset:disabled .btn {
 }
 .nav-link:hover,
 .nav-link:focus {
-  color: #bc1212;
+  color: #6c7293;
 }
 .nav-link.disabled {
   color: #6c757d;
@@ -4264,13 +4264,13 @@ fieldset:disabled .btn {
 }
 .page-link:hover {
   z-index: 2;
-  color: #bc1212;
+  color: #6c7293;
   background-color: #e9ecef;
   border-color: #dee2e6;
 }
 .page-link:focus {
   z-index: 3;
-  color: #bc1212;
+  color: #6c7293;
   background-color: #e9ecef;
   outline: 0;
   box-shadow: 0 0 0 0.25rem rgba(235, 22, 22, 0.25);
@@ -5714,7 +5714,7 @@ fieldset:disabled .btn {
 }
 .link-primary:hover,
 .link-primary:focus {
-  color: #bc1212;
+  color: #6c7293;
 }
 .link-secondary {
   color: #191c24;
