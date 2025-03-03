@@ -17,15 +17,18 @@
     return false;
   });
 
-  // Initialize Flatpickr
   const dateInput = document.getElementById("floatingDOB");
-  const flatpickrInstance = flatpickr(dateInput, {
-    dateFormat: "Y-m-d", // Format the date as YYYY-MM-DD
-    defaultDate: "today", // Optional: Set default date to today
-  });
 
-  // Date Picker Icon Click Event
-  $("#datePickerIcon").click(function () {
-    flatpickrInstance.open(); // Open the Flatpickr date picker
-  });
+  if (dateInput) {
+    // Initialize Flatpickr only if the element is found
+    const flatpickrInstance = flatpickr(dateInput, {
+      dateFormat: "Y-m-d", // Format the date as YYYY-MM-DD
+      defaultDate: "today", // Optional: Set default date to today
+    });
+
+    // Date Picker Icon Click Event
+    $("#datePickerIcon").click(function () {
+      flatpickrInstance.open(); // Open the Flatpickr date picker
+    });
+  }
 })(jQuery);

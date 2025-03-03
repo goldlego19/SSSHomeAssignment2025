@@ -55,7 +55,7 @@
           </a>
 
           <div class="navbar-nav w-100">
-            <a href="{{ route('contacts.index') }}" id="collegesLink" class="nav-item nav-link"
+            <a href="{{ route('colleges.index') }}" id="collegesLink" class="nav-item nav-link"
               ><i class="fa fa-keyboard me-2"></i>Colleges</a
             >
             <a href="{{ route('students.index') }}" id="studentsLink" class="nav-item nav-link"

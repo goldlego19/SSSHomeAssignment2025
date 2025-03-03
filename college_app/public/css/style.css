@@ -315,3 +315,25 @@
 .flatpickr-weekdays span {
   color: var(--light); /* Purple text for weekdays */
 }
+
+
+/* Default styles for the button */
+.edit-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem; /* Adjust padding as needed */
+}
+
+/* Hide the text on smaller screens */
+@media (max-width: 768px) {
+  .edit-btn .edit-text {
+    display: none;
+  }
+  .edit-btn {
+    padding: 0.5rem; /* Reduce padding for smaller buttons */
+    border-radius: 50%; /* Make the button circular */
+    width: 40px; /* Set a fixed width */
+    height: 40px; /* Set a fixed height */
+    justify-content: center; /* Center the icon */
+  }
+}

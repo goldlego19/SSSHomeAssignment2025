@@ -3,9 +3,11 @@
 @section('content')
 <div class="container-fluid pt-4 pb-4 px-4" style="width: 90%">
     <div class="row g-4">
-      <div class="col-sm-12 col-xl-6">
         <div class="bg-secondary rounded h-100 p-4">
-          <h6 class="mb-4">Colleges Hoverable Table</h6>
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <h6 class="mb-0">Colleges Table</h6>
+            <a href="{{route('colleges.create')}}" type="button" class="btn btn-primary">Add College</a>
+          </div>
           <table class="table table-hover">
             <thead>
               <tr>
@@ -17,102 +19,30 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mcast</td>
-                <td>Paola</td>
-                <td class="text-end">
-                  <!-- Align content to the right -->
-
-                  <a class="btn btn-sm btn-circle btn-danger mx-2" href=""
-                    ><i class="bi bi-trash-fill"></i
-                  ></a>
-                  <a
-                    class="btn btn-sm btn-circle btn-success mx-2"
-                    href=""
-                    ><i class="bi bi-pencil-fill"></i
-                  ></a>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Junior College</td>
-                <td>Msida</td>
-                <td class="text-end">
-                  <!-- Align content to the right -->
-
-                  <a class="btn btn-sm btn-circle btn-danger mx-2" href=""
-                    ><i class="bi bi-trash-fill"></i
-                  ></a>
-                  <a
-                    class="btn btn-sm btn-circle btn-success mx-2"
-                    href=""
-                    ><i class="bi bi-pencil-fill"></i
-                  ></a>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Higher</td>
-                <td>Naxxar</td>
-                <td class="text-end">
-                  <!-- Align content to the right -->
-
-                  <a class="btn btn-sm btn-circle btn-danger mx-2" href=""
-                    ><i class="bi bi-trash-fill"></i
-                  ></a>
-                  <a
-                    class="btn btn-sm btn-circle btn-success mx-2"
-                    href=""
-                    ><i class="bi bi-pencil-fill"></i
-                  ></a>
-                </td>
-              </tr>
+              @if ($message = session('message'))
+                      <div class="alert alert-success">{{ $message }}</div>
+                    @endif 
+                    @if ($colleges->count())
+                      @foreach ($colleges as $index => $college)
+                      <tr>
+                        <th scope="row">{{ $index + 1 }}</th>
+                        <td>{{$college -> name}}</td>
+                        <td>{{$college -> address}}</td>
+                        <td class="text-end">
+                          <!-- Align content to the right -->
+                          <a href="{{ route('colleges.edit', $college->id) }}" type="button" class="btn btn-success edit-btn">
+                            <i class="bi bi-pencil-fill"></i>
+                            <span class="edit-text">&nbsp;&nbsp;Edit</span>
+                          </a>
+                        </td>
+                      </tr>
+                      @endforeach
+                    @endif
             </tbody>
           </table>
         </div>
-      </div>
-      <div class="col-sm-12 col-xl-6">
-        <div class="bg-secondary rounded h-100 p-4">
-          <h6 class="mb-4">Add a New College</h6>
-          <form>
-            <div class="form-floating mb-3">
-              <input
-                type="name"
-                class="form-control"
-                id="floatingInput"
-                placeholder="College Name"
-              />
-              <label for="floatingInput">Name</label>
-            </div>
-            <div class="form-floating mb-3">
-              <input
-                type="address"
-                class="form-control"
-                id="floatingAddress"
-                placeholder="Address"
-              />
-              <label for="floatingAddress">Address</label>
-            </div>
-
-            <!-- <div class="form-floating mb-3">
-            <select
-              class="form-select"
-              id="floatingSelect"
-              aria-label="Floating label select example"
-            >
-              <option selected>Open this select menu</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </select>
-            <label for="floatingSelect">Works with selects</label>
-          </div> -->
-
-            <button type="submit" class="btn btn-primary">Create</button>
-          </form>
-        </div>
-    </div>
   </div>
+  
 </div>
+
 @endsection

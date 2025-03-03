@@ -15,7 +15,8 @@ class CollegeController extends Controller
      // Create a new College
 
     public function create(){
-        return view('colleges.create');
+        $college = new College();
+        return view('colleges.create',compact('college'));
     }
 
     public function store(Request $request){
@@ -29,7 +30,7 @@ class CollegeController extends Controller
             'address' => $request->address,
         ]);
 
-        return redirect()->route('colleges.index')->with('success', 'College created successfully');
+        return redirect()->route('colleges.index')->with('message', 'College created successfully');
     }
     // edit a college
 
@@ -53,7 +54,7 @@ class CollegeController extends Controller
         
         $college->update($request->all());
 
-        return redirect()->route('colleges.index')->with('success', 'College was Updated Successfully');
+        return redirect()->route('colleges.index')->with('message', 'College was Updated Successfully');
 
     }
 }
