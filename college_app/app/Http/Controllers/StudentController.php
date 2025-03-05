@@ -8,17 +8,38 @@ use App\Models\College;
 
 class StudentController extends Controller
 {
-    public function index(){
-        $students = Student::all();
-        return view('students.index',compact('students'));
+    public function index(Request $request)
+    {
+        // Fetch colleges for the filter dropdown
+        $colleges = College::orderBy('name')->pluck('name', 'id')->prepend('All Colleges', '');
+
+        $students = Student::query();
+
+        // Apply college filter if a college_id is provided
+        if ($request->has('college_id') && $request->college_id != '') {
+            $students->where('college_id', $request->college_id);
+        }
+
+        // Apply sorting if a sort parameter is provided
+        if ($request->has('sort')) {
+            $sortField = $request->query('sort');
+            if ($sortField === 'name') {
+                $students->orderBy('name');
+            }
+        }
+
+        // Get the filtered and sorted students
+        $students = $students->get();
+
+        return view('students.index', compact('students', 'colleges'));
     }
 
     public function create(){
 
         //fetch all colleges to populate the dropdown
         $colleges = College::all();
-
-        return view('students.create', compact('colleges'));
+        $student = new Student();
+        return view('students.create', compact('colleges','student'));
     }
 
     public function store(Request $request){
@@ -27,24 +48,22 @@ class StudentController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:students,email',
-            'phone' => 'required|string|max:20',
+            'phone' => 'required|string|regex:/^\d{8}$/',
             'dob' => 'required|date',
             'college_id' => 'required|exists:colleges,id',
         ]);
 
         //Creating new Student
 
-        Student::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'dob' => $request->dob,
-            'college_id' => $request->college_id,
-        ]);
+        $student = Student::create($request->all());
 
         //notifing user of creation
 
-        return redirect()->route('students.index')->with('success', 'Student created successfully.');
+        if ($student) {
+            return redirect()->route('students.index')->with('success', 'Student created successfully!');
+        } else {
+            return redirect()->route('students.index')->with('error', 'Failed to create student. Please try again.');
+        }
     }
 
     public function edit($id)
@@ -65,7 +84,7 @@ class StudentController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:students,email,' . $id,
-            'phone' => 'required|string|max:20',
+            'phone' => 'required|string|regex:/^\d{8}$/',
             'dob' => 'required|date',
             'college_id' => 'required|exists:colleges,id',
         ]);
@@ -77,7 +96,7 @@ class StudentController extends Controller
         $student->update($request->all());
 
         // Redirect to the students index page with a success message
-        return redirect()->route('students.index')->with('success', 'Student updated successfully.');
+        return redirect()->route('students.index')->with('success', 'Student updated successfully!');
     }
 
     public function destroy($id)

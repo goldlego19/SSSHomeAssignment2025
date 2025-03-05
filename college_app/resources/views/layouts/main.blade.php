@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>My Contact</title>
+    <title>College App</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -48,7 +48,7 @@
       <!-- Sidebar Start -->
       <div class="sidebar pe-4 pb-3">
         <nav class="navbar bg-secondary navbar-dark">
-          <a href="index.html" class="navbar-brand mx-4 mb-3">
+          <a href="{{route('students.index')}}" class="navbar-brand mx-4 mb-3">
             <h3 class="text-primary">
               <i class="fa fa-user-edit me-2"></i>CollegeApp
             </h3>

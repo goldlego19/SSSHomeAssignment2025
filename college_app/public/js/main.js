@@ -23,7 +23,7 @@
     // Initialize Flatpickr only if the element is found
     const flatpickrInstance = flatpickr(dateInput, {
       dateFormat: "Y-m-d", // Format the date as YYYY-MM-DD
-      defaultDate: "today", // Optional: Set default date to today
+      defaultDate: document.getElementById('floatingDOB').value, // Optional: Set default date to today
     });
 
     // Date Picker Icon Click Event

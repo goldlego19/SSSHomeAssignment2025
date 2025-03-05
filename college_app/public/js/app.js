@@ -1,22 +1,26 @@
-// document.getElementById('filter_company_id').addEventListener('change',
-//     function (){
-//         let companyId= this.value || this.options[this.selectedIndex].value;
-//         window.location.href = window.location.href.split('?')[0]+'?company_id='+companyId
-//     });
 
-// document.querySelectorAll('.btn-delete').forEach(button => {
+const filterFound=document.getElementById('filter_college_id');
+if(filterFound){
+    document.getElementById('filter_college_id').addEventListener('change',
+        function (){
+            let collegeId= this.value || this.options[this.selectedIndex].value;
+            window.location.href = window.location.href.split('?')[0]+'?college_id='+collegeId
+        });
 
-//     button.addEventListener('click',function(event){
-//         event.preventDefault();
-//         if(confirm("Are you sure?")){
-//             let action = this.getAttribute('href')
-//             let form = document.getElementById("form-delete")
-//             form.setAttribute('action',action)
-//             form.submit()
-//         }
-//     });
+}
+document.querySelectorAll('.btn-delete').forEach(button => {
+
+    button.addEventListener('click',function(event){
+        event.preventDefault();
+        if(confirm("Are you sure?")){
+            let action = this.getAttribute('href')
+            let form = document.getElementById("form-delete")
+            form.setAttribute('action',action)
+            form.submit()
+        }
+    });
     
-// });
+});
 
 
 document.addEventListener('DOMContentLoaded', function() {
