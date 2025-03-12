@@ -31,6 +31,9 @@ Route::get('/colleges/{id}/edit',[CollegeController::class,'edit'])->name("colle
 
 Route::put('/colleges/{id}',[CollegeController::class,'update'])->name("colleges.update");
 
+Route::get('/colleges/{id}',[CollegeController::class,'show'])->name("colleges.show");
+
+
 
 //StudentsRoutes
 Route::get('/students',[StudentController::class,'index'])->name("students.index");
@@ -44,3 +47,5 @@ Route::get('/students/{id}/edit',[StudentController::class,'edit'])->name("stude
 Route::put('/students/{id}',[StudentController::class,'update'])->name("students.update");
 
 Route::delete('/students/{id}',[StudentController::class,'destroy'])->name("students.destroy");
+
+Route::get('/students/{id}',[StudentController::class,'show'])->name("students.show");

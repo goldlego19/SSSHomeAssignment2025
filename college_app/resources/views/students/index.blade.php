@@ -51,6 +51,9 @@
               <td>{{ $student->dob }}</td>
               <td>{{ $student->college->name }}</td>
               <td class="text-end">
+                <a class="btn btn-sm btn-circle btn-primary mx-2" href="{{ route('students.show', $student->id) }}">
+                  <i class="bi bi-eye-fill"></i>
+                </a>
                 <a class="btn btn-sm btn-circle btn-danger mx-2 btn-delete" href="{{ route('students.destroy', $student->id) }}">
                   <i class="bi bi-trash-fill"></i>
                 </a>

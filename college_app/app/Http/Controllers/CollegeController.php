@@ -12,6 +12,12 @@ class CollegeController extends Controller
         $colleges= College::all();
         return view("colleges.index", compact('colleges'));
     }
+
+    public function show($id) {
+        $college = College::find($id);
+        return view('colleges.show', compact('college')); // ['contact'] => $contact
+    }
+
      // Create a new College
 
     public function create(){

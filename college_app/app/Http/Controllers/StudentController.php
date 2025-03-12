@@ -34,6 +34,11 @@ class StudentController extends Controller
         return view('students.index', compact('students', 'colleges'));
     }
 
+    public function show($id) {
+        $student = Student::find($id);
+        return view('students.show', compact('student')); // ['contact'] => $contact
+    }
+
     public function create(){
 
         //fetch all colleges to populate the dropdown

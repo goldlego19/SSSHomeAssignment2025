@@ -30,6 +30,9 @@
                         <td>{{$college -> address}}</td>
                         <td class="text-end">
                           <!-- Align content to the right -->
+                          <a href="{{ route('colleges.show', $college->id) }}" type="button" class="btn btn-primary">
+                            <i class="bi bi-eye-fill"></i>
+                          </a>
                           <a href="{{ route('colleges.edit', $college->id) }}" type="button" class="btn btn-success edit-btn">
                             <i class="bi bi-pencil-fill"></i>
                             <span class="edit-text">&nbsp;&nbsp;Edit</span>
