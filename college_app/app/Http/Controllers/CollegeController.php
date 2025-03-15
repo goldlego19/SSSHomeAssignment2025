@@ -63,4 +63,15 @@ class CollegeController extends Controller
         return redirect()->route('colleges.index')->with('message', 'College was Updated Successfully');
 
     }
+    public function destroy($id)
+    {
+        // Find the college by ID
+        $college = College::findOrFail($id);
+
+        // Delete the college record from the database
+        $college->delete();
+
+        // Redirect to the colleges index page with a success message
+        return redirect()->route('colleges.index')->with('success', 'College deleted successfully.');
+    }
 }

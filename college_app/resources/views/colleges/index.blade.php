@@ -33,6 +33,9 @@
                           <a href="{{ route('colleges.show', $college->id) }}" type="button" class="btn btn-primary">
                             <i class="bi bi-eye-fill"></i>
                           </a>
+                          <a class="btn btn-danger mx-2 btn-delete" href="{{ route('colleges.destroy', $college->id) }}">
+                            <i class="bi bi-trash-fill"></i>
+                          </a>
                           <a href="{{ route('colleges.edit', $college->id) }}" type="button" class="btn btn-success edit-btn">
                             <i class="bi bi-pencil-fill"></i>
                             <span class="edit-text">&nbsp;&nbsp;Edit</span>
@@ -40,6 +43,10 @@
                         </td>
                       </tr>
                       @endforeach
+                      <form id="form-delete" method="POST" style="display:none">
+                        @method('DELETE')
+                        @csrf
+                      </form>
                     @endif
             </tbody>
           </table>

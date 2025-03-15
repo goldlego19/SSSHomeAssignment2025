@@ -33,6 +33,9 @@ Route::put('/colleges/{id}',[CollegeController::class,'update'])->name("colleges
 
 Route::get('/colleges/{id}',[CollegeController::class,'show'])->name("colleges.show");
 
+Route::delete('/colleges/{id}',[CollegeController::class,'destroy'])->name("colleges.destroy");
+
+
 
 
 //StudentsRoutes
